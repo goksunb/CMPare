@@ -1,0 +1,145 @@
+Create Tables for User
+create table User (
+user_id int primary key,
+user_name varchar(20),
+password varchar(20),
+email varchar(20),
+unique(email),
+ )
+insert into user values(1,’Ceren’,’247391’,’crntrm’)
+insert into user values(2,’Goksun,’316742’,’gksnblt’)
+insert into user values(3,’Baha’,’986024’,’bhrylmz’)
+
+Create Tables for Products
+ create table Product(
+  product_id int,
+  p_name varchar (20),
+  brand varchar(20),
+  storage_type varchar(20),
+  storage_size number(20),
+  screen_size number(20),
+  refresh_rate number(20),
+  processing_speed number(20),
+  RAM number(20),
+  GPU_RAM number(10),
+  part_name varchar(20),
+  company_id number(20),
+  primary key(product_id),
+  foreign key(company_id) references Company(company_id) )
+insert into Product values(684,’Tulpar T7 V25.1.2’,’Tulpar’,’SSD’,1 TB,17.3",300Hz,2.3 GHz,16 GB,6 GB,’Intel i7’,15)
+insert into Product values(685,’Pavillon Gaming TG01’,’Pavillon’,’SSD’,512 GB,3.9 GHz,16 GB,6 GB,’Ryzen 5’,16)
+insert into Product values(686,’iMac z12WM116512’,’iMac’,’SSD’,512 GB,24",60Hz,2.7 GHz,16 GB,1 GB,’M1’,17)
+insert into Product values(687,’Excalibur E60H’,’Excalibur’,’SSD’,512GB,2.7 GHz,16 GB,1 GB,’Intel i5’,18)
+insert into Product values(669,’Zenbook Flip 13’,’Zenbook’,’SSD’,512 GB,13.3",60Hz,1.1 GHz,8 GB,1 GB,Intel i5,11)
+insert into Product values(670,’Tuf Gaming F15’,’Tuf Gaming’,’SSD’,512 GB,15.6",144Hz,2.7 GHz,16 GB,4 GB,Intel i5,11)
+insert into Product values(671,’X415EA-EK977W’,’SSD’,256 GB,14",60Hz,2.4 GHz,8 GB,1 GB,Intel i5,11)
+insert into Product values(672,’Vivobook 15’,’Vivobook’,’SSD’,512 GB,15.6",60Hz,2.4 GHz,8 GB,2 GB,Intel i5,11)
+insert into Product values(673,’X515JF-EJ353’,’SSD’,8 GB,15.6",60Hz,1 GHz,8 GB,2 GB,Intel i5,11)
+insert into Product values(674,’Meg Infinite X’,’Infinite’,’HDD’,1 TB,3.8 GHz,16 GB,8 GB,Intel i7,12)
+insert into Product values(675,’Pro DP21’,’Pro’,’SSD’,512 GB,2.5 GHz,6 GB,2 GB,Intel i7,12)
+insert into Product values(676,’Summit E16 Flip’,’Summit’,’SSD’,1 TB,16",120Hz,2.9 GHz,32 GB,4 GB,Intel i7,12)
+insert into Product values(677,’Pulse GI76’,’Pulse’,’SSD’,1 TB,17.3",144Hz,2.3 GHz,32 GB,6 GB,Intel i7,12)
+insert into Product values(678,’Ideacentre 3’,’Ideacentre’,’SSD’,256 GB ,2.9 GHz,4 GB,1 GB,Intel i5,13)
+insert into Product values(679,’Ideapad 3’,’Ideapad’,’SSD’,128 GB,15.6",60Hz,2.8 GHz,4 GB,1 GB,Intel Celeron,13)
+insert into Product values(680,’Legion 5’,’Legion’,’SSD’,1 TB,17.3",2.3 GHz,16 GB,6 GB,Intel i7,13)
+insert into Product values(681,’Matebook D15’,’Matebook’,’SSD’,256 GB,15.6",60Hz,2.4 GHz,8 GB,1 GB,Intel i5,14)
+insert into Product values(682,’Matebook 16’,’Matebook’,’SSD’,512 GB,16",60Hz,3.2 GHz,16 GB,1 GB,Ryzen 7,14)
+insert into Product values(683,’Abra A5 V17.1’,’Abra’,’SSD’,512GB,15.6",144Hz,2.7 GHz,8 GB,4 GB,Intel i5,15)
+
+Create Tables for Company
+  create table Company(
+  company_id int,
+  c_name varchar(20),
+  product_id number(20),
+  primary key(company_id),
+  foreign key(product_id) references Product(product_id)
+)
+insert into Company values(11,Asus,669)                 
+insert into Company values(11,Asus,670)               
+insert into Company values(11,Asus,671)                 
+insert into Company values(11,Asus,672)		 
+insert into Company values(11,Asus,673)	
+insert into Company values(12,MSI,674)
+insert into Company values(12,MSI,675)
+insert into Company values(12,MSI,676)
+insert into Company values(12,MSI,677)
+insert into Company values(13,Lenova,678)
+insert into Company values(13,Lenova,679)
+insert into Company values(13,Lenova,680)
+insert into Company values(14,Huawei,681)
+insert into Company values(14,Huawei,682)
+ insert into Company values(18,Casper,687)
+ insert into Company values(17,Apple,686)
+insert into Company values(16,HP,685)
+ insert into Company values(15,Monster,684)
+insert into Company values(15,Monster,683)
+
+Create Tables for PC and Laptop
+create table Laptop(  product_id int,weight number(20),
+foreign key(product_id) references Product(product_id)
+)
+
+create table PC (product_id int, foreign key(product_id) references Product(product_id))
+insert into Laptop values(669,1.3kg)
+insert into Laptop values(670,1.5kg)
+insert into Laptop values(671,1.6kg)
+insert into Laptop values(672,1.4kg)
+insert into Laptop values(673,1.7kg)
+insert into Laptop values(676,2kg)
+insert into Laptop values(677,2.3kg)
+insert into Laptop values(680,3.5kg)
+insert into Laptop values(681,1.2kg)
+insert into Laptop values(682,1.9kg)
+insert into Laptop values(683,1.7kg)
+insert into Laptop values(684,2.8kg)
+insert into prooduct_id values(674)
+insert into prooduct_id values(675)
+insert into prooduct_id values(678)
+insert into prooduct_id values(685)
+insert into prooduct_id values(686)
+insert into prooduct_id values(687)
+
+Create Tables for Website, Sponsor and Non_Sponsor
+create table Website( product varchar(20))
+create table Sponsor( product_id int,
+foreign key(product_id) references Product(product_id)
+ )
+create table Non_Sponsor( product_id int,
+foreign key(product_id) references Product(product_id)
+)
+insert into product_id Sponsor values(670)
+insert into product_id Sponsor values(673)
+insert into product_id Sponsor values(681)
+insert into product_id Sponsor values(687)
+
+insert into product_id Non_Sponsor values(669)
+insert into product_id Non_Sponsor values(671)
+insert into product_id Non_Sponsor values(672)
+insert into product_id Non_Sponsor values(674)
+insert into product_id Non_Sponsor values(675)
+insert into product_id Non_Sponsor values(676)
+insert into product_id Non_Sponsor values(678)
+insert into product_id Non_Sponsor values(679)
+insert into product_id Non_Sponsor values(680)
+insert into product_id Non_Sponsor values(682)
+insert into product_id Non_Sponsor values(683)
+insert into product_id Non_Sponsor values(684)
+insert into product_id Non_Sponsor values(685)
+insert into product_id Non_Sponsor values(685)
+Create Tables for Shown
+  create table Shown(
+  user_id number int primary key,
+  product_id int,
+  votes number(1),
+  foreign key(user_id) references Userr(user_id),
+  foreign key(product_id) references Product(product_id)
+)
+insert into Shown values(1,669,1)    
+ insert into Shown values(3,669,0)     
+insert into Shown values(1,670,0)   
+ insert into Shown values(3,671,0)
+insert into Shown values(2,671,1)     
+insert into Shown values(3,674,1)
+insert into Shown values(2,669,1)    
+insert into Shown values(3,673,1)
+insert into Shown values(2,686,1)
