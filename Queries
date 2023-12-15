@@ -1,0 +1,22 @@
+1. Display data from multiple tables (join)
+
+Display the genre, name of products (rename as PRODUCT INFO), and names of users (rename as USER INFO), who vote Asus laptops.
+
+select product, p.p_name “PRODUCT INFO”, u.user_name “USER INFO”
+from user u, product p,vote v
+where p.product=’Asus’ and s.product_id=n.sprodut_id  and s.user_id=u.user_id 
+
+2. Group By / Order By statements
+How many laptops are looking for according to their brands? Order the results by the number of laptops in descending order.
+select count(*) “Number of Laptops”, brand
+from laptop l, product p
+where l.product_id=p.product_id
+group by brand
+order by “Number of Laptops” desc
+3. Subqueries
+Display the product id, brand, and storage size of products whose storage size is less than the storage sizes of all MSI PCs and laptops.
+select product_id, storage_size, brand
+from product
+where storage_size < ALL (select storage_size from product where  brand = ‘ MSI’)
+
+
